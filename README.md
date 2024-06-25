@@ -9,5 +9,3 @@ Repo for the `Azure DevOps Pipelines Fundamentals` training.
 - Understand the __pipeline syntax__ and how to write pipelines using intellisense
 - Understand events that can __trigger__ pipelines
 - Learn the __context and expression syntax__ as well as pipeline commands
-- Use __Secrets__ and __Environments__ for staged deployments
-- Pipeline templates and __reusable pipelines__
