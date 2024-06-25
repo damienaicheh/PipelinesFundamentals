@@ -6,6 +6,7 @@ This hands on lab consists of the following steps:
 - [Creating a repository](#creating-a-repository)
 - [Creating the pipeline](#creating-the-pipeline)
 - [Viewing your pipeline results](#viewing-your-pipeline-results)
+- [Skip ci](#skip-ci)
 
 ## Creating a repository
 
@@ -123,11 +124,15 @@ Expand your jobs and check that the output was correct.
 
 ![Pipeline job output](assets/list-repo-content.png)
 
-Modify and add `[skip ci]` (not triggering the pipeline) in a commit:
+## Skip ci
+
+Modify something in your pipeline and add `[skip ci]` (not triggering the pipeline) in a commit:
 
 ![Skip CI](assets/skip-ci.png)
 
 All the possible notations are in this [documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/azure-repos-git?view=azure-devops&tabs=yaml#skipping-ci-for-individual-pushes).
+
+You should see that no pipeline is triggered.
 
 ## Summary
 

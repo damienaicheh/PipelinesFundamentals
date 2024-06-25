@@ -12,11 +12,7 @@ Create 1 environment called `Production` and select the **None** option:
 
 ![Create environments](assets/new-environment.png)
 
-You should see the environments created:
-
-![Environments created](assets/environments-created.png)
-
-Click on the `Production` environment and go to the `Approvals and checks` tab. On the right side, click on the `+` button. Search for **Approvals** and click next.
+You should see the environments created, click on the `Production` environment and go to the `Approvals and checks` tab. On the right side, click on the `+` button. Search for **Approvals** and click **Next**.
 
 Add yourself as the `Required approvals` for this environment:
 
@@ -125,9 +121,9 @@ Let's run the pipeline manually:
 
 ![Manual run](assets/manual-trigger.png)
 
-You can skip the production deployment by check or not the checkbox directly.
+You can skip the production deployment by checking or not the checkbox directly.
 
-Then at first launch, you will see a section to review the permissions to access the `Production` environment first. Approve this environment and when you will arrive to the production stage if you haven't skip it you will receive a notification to approve it or not: 
+Then at first launch, you will see a section to review the permissions to access the `Production` environment first. Approve this environment and when you will arrive to the production stage if you haven't skip it you will receive a notification to approve it or not:
 
 ![Approval review](assets/approval-review.png)
 
