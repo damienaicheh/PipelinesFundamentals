@@ -10,7 +10,7 @@ This hands on lab consists of the following steps:
 
 ## Creating a repository
 
-Go to your Azure DevOps project and create a new repository:
+Go to your Azure DevOps project, click on **Repos** on the sidebar and create a new repository:
 
 ![Create a new repository](assets/project-create-repo.png)
 
@@ -34,7 +34,7 @@ Remove the template content - we want to create the pipeline from scratch.
 
 ![Pipeline name](assets/create-pipeline-name.png)
 
-Set the pipelione name to `Pipeline demo`:
+Set the pipeline name to `Pipeline demo`:
 
 ```YAML
 name: Pipeline demo
@@ -104,7 +104,7 @@ script and Bash@3 task are equivalent, but by using `Bash@3` you force the scrip
 
 </details>
 
-Save and run the pipeline by commiting the file. You will be automatically redirected to the pipeline run:
+Save and run the pipeline by committing the file. You will be automatically redirected to the pipeline run:
 
 ![Pipeline run](assets/first-build-started.png)
 
@@ -114,11 +114,11 @@ Click on your pipeline run, on the job `Build`:
 
 ![Pipeline detail](assets/pipeline-detail.png)
 
-Expand `Build job` and note the log in the Checkout task added automatically with the line number (line numbers are links). Check the informations about the build:
+Expand `Build job`. You will notice that a **Checkout** task, cloning the repository, has been automatically added to the pipeline. Click on the Checkout task to view its output:
 
 ![Pipeline checkout task](assets/checkout-task.png)
 
-Expand your jobs and check that the output was correct.
+Expand the jobs you've added and verify if the tasks performed as expected
 
 ![Pipeline job output](assets/multiline-script.png)
 
@@ -126,13 +126,13 @@ Expand your jobs and check that the output was correct.
 
 ## Skip ci
 
-Modify something in your pipeline and add `[skip ci]` (not triggering the pipeline) in a commit:
+Make a modification in your pipeline and include `[skip ci]` in the commit message.
+
+As the name suggests, this will prevent the pipeline from being triggered by this commit.
 
 ![Skip CI](assets/skip-ci.png)
 
-All the possible notations are in this [documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/azure-repos-git?view=azure-devops&tabs=yaml#skipping-ci-for-individual-pushes).
-
-You should see that no pipeline is triggered.
+The [documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/azure-repos-git?view=azure-devops&tabs=yaml#skipping-ci-for-individual-pushes). provides additional modifiers you can use to customize the pipeline behavior
 
 ## Summary
 

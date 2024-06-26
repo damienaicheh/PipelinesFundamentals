@@ -12,7 +12,7 @@ Create 1 environment called `Production` and select the **None** option:
 
 ![Create environments](assets/new-environment.png)
 
-You should see the environments created, click on the `Production` environment and go to the `Approvals and checks` tab. On the right side, click on the `+` button. Search for **Approvals** and click **Next**.
+You should see the all the created environments. Click on the `Production` environment and go to the `Approvals and checks` tab. On the right side, click on the `+` button. Search for **Approvals** and click **Next**.
 
 Add yourself as the `Required approvals` for this environment:
 
@@ -32,8 +32,8 @@ You now have a protected environment that requires your approval before deployin
 
 ## Adding an input for picking environments to manual pipeline trigger
 
-Modify the pipeline yaml file you created in hands on lab 1 ('My first pipeline').
-Add an input of the type `boolean` to the `parameters` just before the job section that you created previously. This will allows you to skip the production deployment that you will create just after. 
+Modify the pipeline YAML file you created in Hands-On Lab 1 ('My First Pipeline'). Add a `boolean` input to the `parameters` section, just before the `job` section you previously created. 
+This attribute when set to true will prevent the pipeline from executing the production deployment. 
 
 All the parameters types are available in the [documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/runtime-parameters?view=azure-devops&tabs=script#parameter-data-types)
 
@@ -52,10 +52,15 @@ parameters:
 
 ## Chaining pipelines steps and conditional execution
 
-Now update the pipeline file to have 3 stages :
-  - Tests: runs on `ubuntu-latest` in parallel of the `Build` one. This one will have 2 jobs one to simulate `Unit tests` and another one for `UI tests`.
-  - Build: Update the job to wrap it inside a stage and make sure it runs in parallel of the Tests stage. 
-  - Production: runs on `ubuntu-latest` after `Tests` and `Build`. Deploys to the environment `Production` only if this was selected as the input parameter. To simulate deployment, the job will execute 3 steps. Each step with writes `Step x deploying...` to the pipeline log and sleeps for 10 seconds.
+Update the pipeline file to include three stages:  
+  
+1. **Tests**: Runs on `ubuntu-latest` in parallel with the `Build` stage. This stage includes two jobs:  
+    - One for simulating `Unit tests`  
+    - Another for `UI tests`  
+     
+2. **Build**: Wrap the existing job inside a stage and ensure it runs in parallel with the `Tests` stage.  
+     
+3. **Production**: Runs on `ubuntu-latest` after the `Tests` and `Build` stages. Deploys to the `Production` environment only if selected as the input parameter. To simulate deployment, the job will execute three steps, each logging `Step x deploying...` to the pipeline log and pausing for 10 seconds. 
 
 <details>
 <summary>Solution</summary>
@@ -76,7 +81,7 @@ stages:
         displayName: 'UI Test'
 
 - stage: Build
-  dependsOn: [] # This will remove implicit dependency and run in parallel with the stage: Tests above 
+  dependsOn: [] # This will remove the implicit dependency and run in parallel with the stage: Tests above 
   jobs:
   - job: Build
     displayName: 'Build job'
@@ -121,15 +126,15 @@ Let's run the pipeline manually:
 
 ![Manual run](assets/manual-trigger.png)
 
-You can skip the production deployment by checking or not the checkbox directly.
+You can decide to skip the production deployment by checking the checkbox.
 
-Then at first launch, you will see a section to review the permissions to access the `Production` environment first. Approve this environment and when you will arrive to the production stage if you haven't skip it you will receive a notification to approve it or not:
+Upon first launch, you will see a section to review the permissions for accessing the `Production` environment. Approve this environment. When you reach the production stage, if you haven't skipped it, you will receive a notification to approve or reject it:  
 
 ![Approval review](assets/approval-review.png)
 
 Open it and click **Approve**
 
-The pipeline stop until you accept or not the deployment or hit the time out limit specified in the environment at the begining, this will automatically cancel the pipeline:
+The pipeline will pause until you approve the deployment or it times out, based on the time limit set in the environment. If this time limit is reached, the entire pipeline will be canceled.
 
 ![Permission review](assets/approve-production-deployment.png)
 
@@ -139,5 +144,4 @@ If you accept the deployment you should see something like this:
 
 ## Summary
 
-In this lab you have learned to create and protect environments in Azure DevOps and use them in a pipeline. You have also learned to conditionally
-execute jobs in parallel to chain jobs using the `dependsOn` keyword.
+In this lab, you learned how to create and secure environments in Azure DevOps and incorporate them into a pipeline. You also learned how to conditionally execute jobs in parallel and chain jobs using the `dependsOn` keyword. 
