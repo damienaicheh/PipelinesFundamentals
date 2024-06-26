@@ -46,7 +46,7 @@ Next, add the triggers to the pipeline with the help of <kbd>Ctrl</kbd>+<kbd>Spa
   - Every sunday at 6:15 UTC
 
 <details>
-  <summary>Solution</summary>
+<summary>Solution</summary>
 
 ```YAML
 trigger:
