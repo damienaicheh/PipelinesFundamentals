@@ -125,3 +125,7 @@ Then click on **Run** to run the pipeline.
 When the pipeline is finished, you should see the output of the template and the specific task:
 
 ![Pipeline output](assets/pipeline-reuse-result.png)
+
+## Summary
+
+In this hands-on lab, you learned how to create a pipeline template and consume it in another pipeline. This allows you to reuse your pipeline logic across different projects.
