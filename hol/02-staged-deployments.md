@@ -71,11 +71,15 @@ stages:
   jobs:
   - job: 
     displayName: Unit tests
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - script: echo simulate running your unit tests!
         displayName: 'Run unit tests'
   - job: 
     displayName: UI tests
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - script: echo "🧪 Testing..."
         displayName: 'UI Test'
@@ -101,6 +105,8 @@ stages:
   jobs:
   - deployment:
     displayName: Production deploy
+    pool:
+      vmImage: 'ubuntu-latest'
     environment: Production
     strategy:
      runOnce:
